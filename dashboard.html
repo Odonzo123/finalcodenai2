@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="PLVCliniclogo.jpg" type="image/png">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/mobile.css">
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" href="css/calc.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,greek' rel='stylesheet' type='text/css'>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/2.6.0/math.min.js"></script>
+        <title>Dashboard</title>
+    </head>
+    <body>
+        <div class="menu fixed-top">
+            <i id="fullMenu" class="fas fa-bars"></i>
+            <i id="openChat" class="fas fa-comments"></i>
+            <i id="openCalc" data-toggle="modal" data-target="#calculatorModal" class="fas fa-calculator"></i>
+        </div>
+        <div class="row no-gutters">
+                <div id="menuFull" class="col-md-2 sidebar">
+                    <div class="user-info">
+                        <img class="user" src="images/user.png">
+                        <div class="user-dropdown">
+                            <center>
+                                <button id="uname" class="username">Admin&emsp;<i id="userdown" class="fas fa-caret-down"></i></button>
+                            </center>
+                        </div>
+                    </div>
+                    <div id="options" class="user-options2">
+                                <ul>
+                                    <a href="./index.html" type="button" class="btn btn-info text-white fs-4 d-flex justify-content-center">Log Out</a>
+                                </ul>
+                        </div>
+                    <div class="navigation">
+                        <ul>
+                            <li class="active"><i class="fas fa-tachometer-alt" style="color: black"></i> Dashboard</li>                            
+                            <li><i class="fas fa-user-tie"></i><a href="form.php" style="color: black"> Patients</a></li>
+                            <li><i class="fas fa-book-open"></i><a href="record sheet.php" style="color: black"> Record Sheet</a></li>
+                            <li><i class="fas fa-file"></i> <a href="docu.html" style="color: black"> Documentations</a></li> 
+                            <li><i class="fas fa-cogs"></i> <a href="settings.html" style="color: black"> Settings</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal fade" id="calculatorModal" tabindex="-1" role="dialog" aria-labelledby="calcModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title mdtitle" id="calcModalLabel">Calculator</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body mmy">
+                                <div class="wrapper">
+    
+    <div class="calc">
+      <div class="top">
+        <div class='result'></div>
+        <div class='screen'><span id="screentext" class="screentext animated"></span><span class="hints"></span></div>
+      </div>
+      <div class="keyboard">
+
+        <div class="crow">
+          <div class='cb cbac'>AC</div>
+          <div class="cb cbpar" key='('>(</div>
+          <div class="cb cbpar" key=')'>)</div>
+          <div class='cb cbce'>CE</div>
+        </div>
+
+        <div class="crow">
+          <div class="cb cbnum" key='pi'>π</div>
+          <div class="cb cbnum" key='e'>e</div>
+          <div class="cb cbnum" key='phi'>φ</div>
+          <div class="cb cbnum" key='tau'>τ</div>
+        </div>
+
+        <div class="crow">
+          <div class="cb cbinv">Inv</div>
+          <div class="cb cbfun" key1='sin(' key2="asin(">sin<sup class="inv">-1</sup></div>
+          <div class="cb cbfun" key1='cos(' key2="acos(">cos<sup class="inv">-1</sup></div>
+          <div class="cb cbfun" key1='tan(' key2="atan(">tan<sup class="inv">-1</sup></div>
+        </div>
+
+        <div class="crow">
+          <div class="cb cbfun" key1='log10('>log</div>
+          <div class="cb cbfun" key1='log('>ln</div>
+          <div class="cb cbop" key='!' char='!'>!</div>
+          <div class="cb cbop" key='deg' char='deg'>deg</div>
+        </div>
+
+        <div class="crow">
+          <div class="cb cbfun" key1='sqrt('>√</div>
+          <div class="cb cbop" key='^2' char='²'>x²</div>
+          <div class="cb cbop" key='^3' char='³'>x³</div>
+          <div class="cb cbop" key='^' char='^'>^</div>
+        </div>
+
+        <div class="crow">
+          <div class="cb cbnum lighter" key='7'>7</div>
+          <div class="cb cbnum lighter" key='8'>8</div>
+          <div class="cb cbnum lighter" key='9'>9</div>
+          <div class="cb cbop operands" key='/' char='÷'>÷</div>
+        </div>
+
+        <div class="crow">
+          <div class="cb cbnum lighter" key='4'>4</div>
+          <div class="cb cbnum lighter" key='5'>5</div>
+          <div class="cb cbnum lighter" key='6'>6</div>
+          <div class="cb cbop operands" key='*' char='×'>×</div>
+        </div>
+
+        <div class="crow">
+          <div class="cb cbnum lighter" key='1'>1</div>
+          <div class="cb cbnum lighter" key='2'>2</div>
+          <div class="cb cbnum lighter" key='3'>3</div>
+          <div class="cb cbop operands" key='-' char='-'>-</div>
+        </div>
+
+        <div class="crow">
+          <div class="cb cbnum lighter" key='0'>0</div>
+          <div class="cb cbnum lighter" key='.'>.</div>
+          <div class="cb cbop lighter" key='E' char='E'>exp</div>
+          <div class="cb cbop operands" key='+' char='+'>+</div>
+        </div>
+
+        <div class="crow">
+          <div class="cb cbrnd" style="width:25%">Rnd</div>
+          <div class="cb cbans" style="width:25%">Ans</div>
+          <div class="cb enter" style="width:50%">=</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="dash" class="col-md-10 dashboard">
+                    <div class="container">
+                        <h1 class="dashboard-h1">Dashboard</h1>
+                        <div class="row">
+                            <div id="monthlyReport" class="col-md-6 report">
+                                <div class="report-header">
+                                    <div class="row">
+                                        <div class="col-sm-10 title">
+                                            <span>Use of Medicines</span>
+                                        </div>
+                                            <span><i id="collapseMSR" class="fas fa-sort-down lilup"></i></span>
+                                        &emsp;
+                                            <span>
+                                                <i id="closeMSR" class="fas fa-times"></i>
+                                            </span>
+                                        
+                                    </div>
+                                </div>
+                                <canvas id="monthlyChart"></canvas>
+                            </div>
+                            <div id="packageSalesReport" class="col-md-6 report">
+                                <div class="report-header">
+                                    <div class="row">
+                                        <div class="col-sm-10 title">
+                                            <span>Patients per Course Graph</span>
+                                        </div>
+                                            <span><i id="collapsePSR" class="fas fa-sort-down lilup"></i></span>
+                                        &emsp;
+                                            <span>
+                                                <i id="closePSR" class="fas fa-times"></i>
+                                            </span>
+                                        
+                                    </div>
+                                </div>
+                                <canvas id="packageChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div id="financialReport" class="col-md-6 report">
+                                <div class="report-header">
+                                    <div class="row">
+                                        <div class="col-sm-10 title">
+                                            <span>Common Complaints</span>
+                                        </div>
+                                            <span><i id="collapseFR" class="fas fa-sort-down lilup"></i></span>
+                                        &emsp;
+                                            <span>
+                                                <i id="closeFR" class="fas fa-times"></i>
+                                            </span>
+                                        
+                                    </div>
+                                </div>
+                                <canvas id="financialChart"></canvas>
+                            </div>
+                            <div id="toDoList" class="col-md-6 report">
+                                <div class="report-header">
+                                    <div class="row">
+                                        <div class="col-sm-10 title">
+                                            <span>My To Do List</span>
+                                        </div>
+                                            <span><i id="collapseTDL" class="fas fa-sort-down lilup"></i></span>
+                                        &emsp;
+                                            <span>
+                                                <i id="closeTDL" class="fas fa-times"></i>
+                                            </span>
+                                        
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form">
+                                    <form action="javascript:void(0);" method="POST" onsubmit="app.Add()"> 
+                                    <input type="text" id="add-todo" placeholder="Things To-Do">
+                                    <input type="submit" value="Add" class="btn btn-primary">
+                                    </form>
+                                    <p id="counter"></p>
+                                
+                                    <table>
+                                    <tr class="to-do">
+                                        <th><h3>List of Tasks:</h3></th>
+                                    </tr>
+                                        <tbody id="tasks">
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="edit-box" role="aria-hidden">
+                                    <form action="javascript:void(0);" method="POST" id="save-edit">
+                                      <input type="text" id="edit-todo">
+                                      <input type="submit" value="Save Changes" class="btn btn-success"/> <a onclick="CloseInput()" aria-label="Close">&#10006;</a>
+                                    </form>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="display-6 fixed-bottom text-center text-white bg-dark fs-6 fw-lighter lh-base mt-2">
+                    © Pamantasan ng Lungsod ng Valenzuela Clinic | All rights reserved 2023.
+                </footer>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+        <script src="js/charts.js"></script>
+        <script src="js/calc.js"></script>
+        <script src="code12.js"></script>
+    </body>
+</html>
